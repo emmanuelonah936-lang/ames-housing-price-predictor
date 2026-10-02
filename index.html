@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ames House Price Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #eef2f7 0%, #dbe4f0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #1e293b;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 640px;
+            border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12),
+                        0 4px 12px rgba(15, 23, 42, 0.06);
+            padding: 40px 36px 36px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .header { text-align: center; margin-bottom: 28px; }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            margin-top: 8px;
+            font-size: 0.92rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .header .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            color: #ffffff;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+        }
+
+        .header .icon svg { width: 26px; height: 26px; }
+
+        .section-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #64748b;
+            margin: 24px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section-title:first-of-type { margin-top: 0; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 520px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        .form-group { margin-bottom: 0; }
+
+        label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+        label .hint {
+            font-weight: 400;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            margin-left: 4px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 0.92rem;
+            font-family: inherit;
+            color: #0f172a;
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+            -moz-appearance: textfield;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"]:hover { border-color: #cbd5e1; }
+
+        input[type="number"]:focus {
+            background: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+        }
+
+        input[type="number"]::placeholder { color: #94a3b8; }
+
+        .btn {
+            width: 100%;
+            padding: 14px 20px;
+            margin-top: 28px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            font-family: inherit;
+            color: #ffffff;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
+        }
+
+        .btn:hover {
+            filter: brightness(1.05);
+            box-shadow: 0 10px 22px rgba(37, 99, 235, 0.36);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.28);
+        }
+
+        .result {
+            margin-top: 26px;
+            padding: 22px;
+            border-radius: 12px;
+            text-align: center;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 1.5px solid #bfdbfe;
+            animation: slideUp 0.35s ease-out;
+        }
+
+        .result .label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #1d4ed8;
+            margin-bottom: 6px;
+        }
+
+        .result .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            letter-spacing: -0.02em;
+        }
+
+        .error {
+            margin-top: 26px;
+            padding: 16px 18px;
+            border-radius: 12px;
+            background: #fef2f2;
+            border: 1.5px solid #fecaca;
+            color: #b91c1c;
+            font-size: 0.9rem;
+            text-align: center;
+            animation: slideUp 0.35s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 30px 22px 26px; border-radius: 16px; }
+            .header h1 { font-size: 1.35rem; }
+            .result .value { font-size: 1.65rem; }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <div class="header">
+            <div class="icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5L12 3l9 7.5M5 9.75V21h14V9.75M9.75 21v-6h4.5v6"/>
+                </svg>
+            </div>
+            <h1>Ames House Price Predictor</h1>
+            <p>Enter the property details below to estimate its market value.</p>
+        </div>
+
+        <form method="POST" action="/" autocomplete="off">
+
+            <div class="section-title">Size &amp; Space</div>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="gr_liv_area">Above Ground Living Area <span class="hint">(sq ft)</span></label>
+                    <input type="number" step="any" min="0" id="gr_liv_area"
+                           name="Gr Liv Area" placeholder="e.g. 1500" required>
+                </div>
+                <div class="form-group">
+                    <label for="total_bsmt_sf">Total Basement Area <span class="hint">(sq ft)</span></label>
+                    <input type="number" step="any" min="0" id="total_bsmt_sf"
+                           name="Total Bsmt SF" placeholder="e.g. 800">
+                </div>
+                <div class="form-group">
+                    <label for="lot_area">Lot Area <span class="hint">(sq ft)</span></label>
+                    <input type="number" step="any" min="0" id="lot_area"
+                           name="Lot Area" placeholder="e.g. 9000">
+
+                </div>           
+                <div class="form-group">
+                    <label for="garage_cars">Garage Capacity <span class="hint">(cars)</span></label>
+                    <input type="number" step="1" min="0" max="5" id="garage_cars"
+                           name="Garage Cars" placeholder="e.g. 2">
+        
+                </div>
+            </div>
+
+            <div class="section-title">Quality &amp; Age</div>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="overall_qual">Overall Quality <span class="hint">(1–10)</span></label>
+                    <input type="number" step="1" min="1" max="10" id="overall_qual"
+                           name="Overall Qual" placeholder="e.g. 7" required>
+                </div>
+                <div class="form-group">
+                    <label for="overall_cond">Overall Condition <span class="hint">(1–10)</span></label>
+                    <input type="number" step="1" min="1" max="10" id="overall_cond"
+                           name="Overall Cond" placeholder="e.g. 5">
+                </div>
+                <div class="form-group">
+                    <label for="year_built">Year Built</label>
+                    <input type="number" step="1" min="1800" max="2030" id="year_built"
+                           name="Year Built" placeholder="e.g. 1995">
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Predict Price</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">
+                <div class="label">Estimated Price</div>
+                <div class="value">{{ prediction_text }}</div>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </main>
+</body>
+</html>
+
