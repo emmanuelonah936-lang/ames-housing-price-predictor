@@ -4,7 +4,7 @@ An end-to-end machine learning project that predicts house sale prices using the
 
 ---
 
-## 📌 Overview
+##  Overview
 
 This project builds a regression model that estimates a home's sale price based on **79 features** describing residential home sales in Ames, Iowa (2006–2010). After exploring and cleaning the data, several models were trained and compared, and the best-performing model was selected via cross-validated hyperparameter tuning.
 
@@ -12,7 +12,7 @@ The final model is exported as `.pkl` files, ready to be served through an inter
 
 ---
 
-## 🎯 Goals
+##  Goals
 
 - Demonstrate a complete, end-to-end data science workflow
 - Handle real-world messy data (missing values, skewed target, mixed feature types)
@@ -22,7 +22,7 @@ The final model is exported as `.pkl` files, ready to be served through an inter
 
 ---
 
-## 📂 Dataset
+##  Dataset
 
 **Source:** Ames Housing Dataset — a rich alternative to the classic Boston Housing dataset.
 
@@ -32,7 +32,7 @@ The final model is exported as `.pkl` files, ready to be served through an inter
 
 ---
 
-## 🛠️ Project Workflow
+##  Project Workflow
 
 ### 1. Exploratory Data Analysis (EDA)
 
@@ -53,7 +53,7 @@ The final model is exported as `.pkl` files, ready to be served through an inter
 ### 3. Target Transformation
 
 - Applied `log1p` on `SalePrice` to correct the right skew
-- Skewness dropped from **1.74 → -0.09** ✅
+- Skewness dropped from **1.74 → -0.09**
 
 ### 4. Model Training & Comparison
 
@@ -63,7 +63,7 @@ The final model is exported as `.pkl` files, ready to be served through an inter
 | Random Forest | $26,815 | 0.9103 |
 | XGBoost | $25,311 | 0.9201 |
 | LightGBM | $24,798 | 0.9233 |
-| **Gradient Boosting** ⭐ | **$23,947** | **0.9285** |
+| **Gradient Boosting**  | **$23,947** | **0.9285** |
 
 ### 5. Hyperparameter Tuning
 
@@ -115,8 +115,6 @@ ames-housing-price-prediction/
 
 ---
 
-## 🚀 Getting Started
-
 ### Prerequisites
 
 ```bash
@@ -126,14 +124,14 @@ pip install -r requirements.txt
 ### Run the notebook
 
 ```bash
-## 🧰 Tech Stack
+##  Tech Stack
 
-- **Python 3.14**
-- **pandas**, **NumPy** — data manipulation
-- **Matplotlib**, **Seaborn** — visualization
-- **scikit-learn** — modeling, pipelines, preprocessing
-- **XGBoost**, **LightGBM** — gradient boosting
-- **joblib** — model persistence
+- Python 3.14
+- pandas, NumPy** — data manipulation
+- Matplotlib, Seaborn — visualization
+- scikit-learn — modeling, pipelines, preprocessing
+- XGBoost, LightGBM** — gradient boosting
+- joblib — model persistence
 
 ---
 
@@ -146,15 +144,13 @@ pip install -r requirements.txt
 
 ---
 
-## 📜 License
+##  License
 
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## 🙋 Author
-
-**[Your Name]**
+**[Onah Emmanuel Obinna]**
 GitHub: [@yourhandle](https://github.com/yourhandle)
 
 If you found this project helpful or interesting, feel free to ⭐ the repo!
