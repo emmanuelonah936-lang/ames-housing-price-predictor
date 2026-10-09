@@ -105,7 +105,7 @@ Top predictive features identified by the final model:
 ```
 ames-housing-price-prediction/
 │
-├── Ames_Housing_Data.ipynb     # Main notebook (EDA → model → export)
+├── Ames_Housing_Data.ipynb     # Main notebook
 ├── Ames_Housing_Data.csv       # Dataset
 ├── ames_model.pkl              # Trained Gradient Boosting pipeline
 ├── ames_preprocessor.pkl       # Fitted ColumnTransformer
@@ -135,22 +135,10 @@ pip install -r requirements.txt
 
 ---
 
-## 🔮 Future Improvements
-
-- [ ] Build an interactive **Streamlit** web app for live predictions
-- [ ] Add SHAP explanations for per-prediction interpretability
-- [ ] Experiment with stacking/blending ensembles
-- [ ] Deploy via Docker + a cloud platform (Render / Hugging Face Spaces / AWS)
-
----
-
 ##  License
 
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
-
-**[Onah Emmanuel Obinna]**
-GitHub: [@yourhandle](https://github.com/yourhandle)
 
 If you found this project helpful or interesting, feel free to ⭐ the repo!
