@@ -121,7 +121,6 @@ ames-housing-price-prediction/
 pip install -r requirements.txt
 streamlit run app.py
 ```
-### Run the notebook
 
 ##  Tech Stack
 
