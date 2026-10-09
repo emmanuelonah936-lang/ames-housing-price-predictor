@@ -69,7 +69,7 @@ The final model is exported as `.pkl` files, ready to be served through an inter
 
 - Used `GridSearchCV` (5-fold CV) on the full pipeline
 - **Best params:** `learning_rate=0.05`, `max_depth=4`, `n_estimators=500`
-- **CV R²:** `0.8983 ± 0.0095`
+- **CV R²:** `0.8914 ± 0.0137`
 
 ### 6. Final Evaluation (Holdout Test Set)
 
@@ -100,7 +100,7 @@ Top predictive features identified by the final model:
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 ames-housing-price-prediction/
