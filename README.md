@@ -8,8 +8,6 @@ An end-to-end machine learning project that predicts house sale prices using the
 
 This project builds a regression model that estimates a home's sale price based on **79 features** describing residential home sales in Ames, Iowa (2006–2010). After exploring and cleaning the data, several models were trained and compared, and the best-performing model was selected via cross-validated hyperparameter tuning.
 
-The final model is exported as `.pkl` files, ready to be served through an interactive web app.
-
 ---
 
 ##  Goals
@@ -53,7 +51,7 @@ The final model is exported as `.pkl` files, ready to be served through an inter
 ### 3. Target Transformation
 
 - Applied `log1p` on `SalePrice` to correct the right skew
-- Skewness dropped from **1.74 → -0.09**
+- Skewness dropped from 1.74 → -0.09
 
 ### 4. Model Training & Comparison
 
@@ -63,7 +61,7 @@ The final model is exported as `.pkl` files, ready to be served through an inter
 | Random Forest | $26,815 | 0.9103 |
 | XGBoost | $25,311 | 0.9201 |
 | LightGBM | $24,798 | 0.9233 |
-| **Gradient Boosting**  | **$23,947** | **0.9285** |
+| Gradient Boosting  | $23,947 | 0.9285 |
 
 ### 5. Hyperparameter Tuning
 
@@ -79,7 +77,7 @@ The final model is exported as `.pkl` files, ready to be served through an inter
 
 ---
 
-## 📊 Key Insights
+##  Key Insights
 
 Top predictive features identified by the final model:
 
@@ -105,17 +103,19 @@ Top predictive features identified by the final model:
 ```
 ames-housing-price-prediction/
 │
-├── Ames_Housing_Data.ipynb     # Main notebook
-├── Ames_Housing_Data.csv       # Dataset
-├── ames_model.pkl              # Trained Gradient Boosting pipeline
-├── ames_preprocessor.pkl       # Fitted ColumnTransformer
+├── Ames_Housing_Data.ipynb
+├── Ames_Housing_Data.csv
+├── ames_model.pkl
+├── ames_preprocessor.pkl
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-### Run the notebook
+### Run Locally
+
+**Requirements:** Python 3.10+
 
 ```bash
 pip install -r requirements.txt
