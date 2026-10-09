@@ -115,30 +115,19 @@ ames-housing-price-prediction/
 
 ---
 
-### Prerequisites
-
-```bash
-pip install -r requirements.txt
-```
-
 ### Run the notebook
 
 ```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+### Run the notebook
+
 ##  Tech Stack
 
 - Python 3.14
-- pandas, NumPy** — data manipulation
+- pandas, NumPy — data manipulation
 - Matplotlib, Seaborn — visualization
 - scikit-learn — modeling, pipelines, preprocessing
 - XGBoost, LightGBM** — gradient boosting
 - joblib — model persistence
-
----
-
-##  License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-If you found this project helpful or interesting, feel free to ⭐ the repo!
