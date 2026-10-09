@@ -67,7 +67,7 @@ This project builds a regression model that estimates a home's sale price based 
 
 - Used `GridSearchCV` (5-fold CV) on the full pipeline
 - Best params: `learning_rate=0.05`, `max_depth=4`, `n_estimators=500`
-- Cross-Validation R² R²: `0.8914 ± 0.0137`
+- Cross-Validation R² Score: `0.8914 ± 0.0137`
 
 ### 6. Final Evaluation (Holdout Test Set)
 
