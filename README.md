@@ -57,11 +57,11 @@ This project builds a regression model that estimates a home's sale price based 
 
 | Model | RMSE | R² |
 |---|---|---|
-| Linear Regression | $31,400 | 0.8770 |
-| Random Forest | $26,815 | 0.9103 |
-| XGBoost | $25,311 | 0.9201 |
-| LightGBM | $24,798 | 0.9233 |
-| Gradient Boosting  | $23,947 | 0.9285 |
+| LinearRegression | $31,400 | 0.8770 |
+| RandomForestRegressor | $26,815 | 0.9103 |
+| XGBRegressor | $25,311 | 0.9201 |
+| LightGBMRegressor | $24,798 | 0.9233 |
+| GradientBoostingRegressor  | $23,947 | 0.9285 |
 
 ### 5. Hyperparameter Tuning
 
